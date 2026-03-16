@@ -110,7 +110,7 @@ resource "helm_release" "jupyterhub" {
   }
   set {
     name  = "hub.config.GitHubOAuthenticator.allowed_users"
-    value = "{j34ni,fpaulifr}"
+    value = "{benbovy,j34ni,fpaulifr}"
   }
   set {
     name  = "ingress.enabled"
