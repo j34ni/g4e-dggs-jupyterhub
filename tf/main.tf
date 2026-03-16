@@ -142,7 +142,7 @@ resource "helm_release" "jupyterhub" {
   }
   set {
     name  = "singleuser.image.tag"
-    value = "2026.01.30"
+    value = "2025.05.22"
   }
   set {
     name  = "singleuser.storage.type"
@@ -177,7 +177,7 @@ resource "helm_release" "dask_gateway" {
   namespace  = local.namespace
   repository = "https://helm.dask.org"
   chart      = "dask-gateway"
-  version    = "2024.1.0"
+  version    = "2025.4.0"
   timeout    = 300
 
   values = [

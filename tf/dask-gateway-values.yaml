@@ -4,7 +4,7 @@ gateway:
     jupyterhub:
       apiTokenFromSecretName: hub
       apiTokenFromSecretKey: hub.services.dask-gateway.apiToken
-  prefix: /
+  prefix: /services/dask-gateway
   extraConfig:
     resource-limits: |
       c.ClusterConfig.cluster_max_cores = 16
@@ -13,7 +13,7 @@ gateway:
   backend:
     image:
       name: ghcr.io/dask/dask-gateway
-      tag: "2024.1.0"
+      tag: "2025.4.0"
     scheduler:
       cores:
         request: 0.5
@@ -38,6 +38,6 @@ gateway:
 traefik:
   image:
     name: traefik
-    tag: "2.10.6"
+    tag: "3.3.5"
   service:
     type: LoadBalancer
