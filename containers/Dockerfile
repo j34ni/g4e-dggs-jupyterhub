@@ -1,30 +1,17 @@
-FROM quay.io/jupyter/base-notebook:latest
+FROM pangeo/pangeo-notebook:2025.05.22
 
 USER root
 
 RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends git libgdal-dev libgeos-dev libproj-dev && \
+    apt-get install --yes --no-install-recommends build-essential libproj-dev libgeos-dev libgdal-dev && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY --chown=${NB_UID} environment.yml /tmp/environment.yml
+COPY --chown=${NB_UID} environment.yml /home/jovyan/environment.yml
 
-ENV PIP_NO_CACHE_DIR=1
+USER ${NB_UID}
 
-RUN mamba env create -f /tmp/environment.yml && \
+RUN mamba env update -n notebook --file /home/jovyan/environment.yml && \
     mamba clean --all -y -f && \
-    rm /tmp/environment.yml && \
-    fix-permissions /opt/conda/envs/notebook && \
-    fix-permissions /home/jovyan
-
-RUN /opt/conda/envs/notebook/bin/python -m ipykernel install \
-    --prefix=/opt/conda \
-    --name="notebook" \
-    --display-name="Python (notebook)" && \
-    ls /opt/conda/share/jupyter/kernels/
-
-RUN mkdir -p /home/jovyan/.ipython && \
-    fix-permissions /home/jovyan/.ipython
-
-USER ${NB_USER}
+    rm -rf ~/.cache/pip /home/jovyan/environment.yml

@@ -1,46 +1,13 @@
-name: notebook
 channels:
   - conda-forge
+
 dependencies:
-  - python=3.12
-  - affine
-  - black
-  - cartopy
-  - dask-gateway
-  - dask=2025.12.0
-  - dask-labextension
-  - distributed=2025.12.0
-  - healpix-geo
-  - ipykernel
-  - ipython
-  - isort
-  - jedi-language-server
-  - jupyter-resource-usage
-  - jupyterlab
-  - jupyterlab-nvdashboard
-  - jupyterlab_code_formatter
-  - matplotlib
-  - numpy
-  - numpy_groupies
-  - opt-einsum
-  - pip
-  - pre-commit
-  - pydantic
-  - pyinstrument
-  - pyproj
-  - pystac-client
-  - pytest
-  - pytest-cov
-  - pytorch
-  - ruff-lsp
-  - scipy
-  - sparse
-  - structlog
-  - xarray
-  - xbatcher
+  - cdshealpix
+  - healpy
+  - h3ronpy
   - xdggs
-  - zarr
+  - pip
   - pip:
-    - git+https://github.com/EOPF-DGGS/healpix-plot.git
-    - git+https://github.com/EOPF-DGGS/healpix-resample.git
-    - rasterix
+      - git+https://github.com/EOPF-DGGS/healpix-geo.git
+      - git+https://github.com/EOPF-DGGS/healpix-plot.git
+      - git+https://github.com/EOPF-DGGS/healpix-resample.git
