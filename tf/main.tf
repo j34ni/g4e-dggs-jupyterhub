@@ -138,11 +138,11 @@ resource "helm_release" "jupyterhub" {
   }
   set {
     name  = "singleuser.image.name"
-    value = "pangeo/pangeo-notebook"
+    value = "ghcr.io/j34ni/g4e-dggs-notebook"
   }
   set {
     name  = "singleuser.image.tag"
-    value = "2025.05.22"
+    value = "latest"
   }
   set {
     name  = "singleuser.storage.type"
