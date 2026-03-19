@@ -1,4 +1,4 @@
-FROM quay.io/jeani/g4e-notebook:latest
+FROM ghcr.io/eopf-dggs/g4e-notebook:latest
 
 USER root
 RUN --mount=type=secret,id=github_token,mode=0444 \
